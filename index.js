@@ -1,55 +1,40 @@
-let topbar = document.getElementById("topbar");
-let leftbar = document.getElementById("leftbar");
-let rightbar = document.getElementById("rightbar");
-let bottombar = document.getElementById("bottombar");
-let content = document.getElementById("content");
+// index
 
 function initTop(){
-    let tmp = document.createElement("text");
-    tmp.innerHTML = "Header";
-    topbar.append(tmp);
-}
-function initLeft(){
-    let tmp = document.createElement("text");
-    tmp.innerHTML = "Left";
-    tmp.onclick = function(){
-        if(leftbar.style.width == "50px"){
-            leftbar.style.width = "150px";
-            tmp.innerHTML = "Left";
-        }else{
-            leftbar.style.width = "50px";
-            tmp.innerHTML = ">";
-        }
-    }
-    leftbar.append(tmp);
-}
-function initRight(){
-    let tmp = document.createElement("text");
-    tmp.innerHTML = "Right";
-    tmp.onclick = function(){
-        if(rightbar.style.width == "50px"){
-            rightbar.style.width = "250px";
-            tmp.innerHTML = "Right";
-        }else{
-            rightbar.style.width = "50px";
-            tmp.innerHTML = "<";
-        }
-    }
-    rightbar.append(tmp);
+    let topbar = document.getElementById("topbar");
+    let takoTag = document.createElement("text");
+    takoTag.innerHTML = "TakoAI - ";
+    let titleTag = document.createElement("button");
+    titleTag.innerHTML = "Business Intelligence Platform";
+    titleTag.onclick = setCover;
+    let dataTag = document.createElement("button");
+    dataTag.className = "w3-right";
+    dataTag.innerHTML = "Data";
+    dataTag.onclick = setData;
+    let anaTag = document.createElement("button");
+    anaTag.className = "w3-right";
+    anaTag.innerHTML = "Analysis";
+    anaTag.onclick = setAnalysis;
+    let camTag = document.createElement("button");
+    camTag.className = "w3-right";
+    camTag.innerHTML = "Campaign";
+    topbar.append(takoTag);
+    topbar.append(titleTag);
+    topbar.append(camTag);
+    topbar.append(anaTag);
+    topbar.append(dataTag);
 }
 function initBottom(){
-    let tmp = document.createElement("text");
-    tmp.innerHTML = "Footer";
+    let bottombar = document.getElementById("bottombar");
+    let tmp = document.createElement("div");
+    tmp.innerHTML = "TakoAI Copy Right 2023";
     bottombar.append(tmp);
 }
 function initContent(){
-    let tmp = document.createElement("text");
-    tmp.innerHTML = "Content";
-    content.append(tmp);
+    setCover();
+    viewAll();
 }
 
 initTop();
-initLeft();
-initRight();
 initBottom();
 initContent();
