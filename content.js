@@ -94,19 +94,23 @@ function viewContent(){
     content.innerHTML = "";
     if(focusContent["type"] == "static"){
         content.innerHTML = focusContent["data"];
-    }else if(focusContent["type"] == "upload"){
+    }else if(focusContent["type"] == "fill"){
         for(let key in focusContent["data"]){
+            let tmp0 = focusContent["data"][key];
             let keyid = document.createElement("text");
             keyid.innerHTML = key + ": ";
             let keyvalue = document.createElement("input");
-            keyvalue.placeholder = focusContent["data"][key];
+            keyvalue.setAttribute("type", tmp0["t"]);
+            if("p" in tmp0){
+                keyvalue.placeholder = tmp0["p"];
+            }
+            if("v" in tmp0){
+                keyvalue.value = tmp0["v"];
+            }
             content.appendChild(keyid);
             content.appendChild(keyvalue);
+            content.appendChild(document.createElement("br"));
         }
-        content.appendChild(document.createElement("br"));
-        let file = document.createElement("input");
-        file.setAttribute("type", "file");
-        content.appendChild(file);
     }else if(focusContent["type"] == "data"){
         let data = focusContent["data"];
         let scroller = document.createElement("div");
@@ -148,9 +152,12 @@ function viewContent(){
         scroller.appendChild(table);
         let update = document.createElement("button");
         update.innerHTML = "Update";
-        update.style.border = "1px solid #ccc";
-        update.className = "w3-right";
+        update.className = "w3-right inner";
         update.onclick = focusContent["update"];
+        let remove = document.createElement("button");
+        remove.innerHTML = "Remove";
+        remove.className = "w3-right inner";
+        remove.onclick = focusContent["remove"];
         let datatext = document.createElement("span");
         datatext.innerHTML = "Data Name: ";
         let namebox = document.createElement("input");
@@ -158,7 +165,16 @@ function viewContent(){
         content.appendChild(datatext);
         content.appendChild(namebox);
         content.appendChild(update);
+        content.appendChild(remove);
         content.appendChild(scroller);
+    }else if(focusContent["type"] == "list"){
+        for(let key in focusContent["data"]){
+            let tmp0 = focusContent["data"][key];
+            let tmp1 = document.createElement("div");
+            tmp1.className = "w3-panel";
+            tmp1.innerHTML = tmp0;
+            content.appendChild(tmp1);
+        }
     }
 }
 function viewAll(){

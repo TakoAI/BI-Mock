@@ -11,6 +11,10 @@ function initTop(){
     dataTag.className = "w3-right";
     dataTag.innerHTML = "Data";
     dataTag.onclick = setData;
+    let proTag = document.createElement("button");
+    proTag.className = "w3-right";
+    proTag.innerHTML = "Process";
+    proTag.onclick = setProcess;
     let anaTag = document.createElement("button");
     anaTag.className = "w3-right";
     anaTag.innerHTML = "Analysis";
@@ -22,6 +26,7 @@ function initTop(){
     topbar.append(titleTag);
     topbar.append(camTag);
     topbar.append(anaTag);
+    topbar.append(proTag);
     topbar.append(dataTag);
 }
 function initBottom(){

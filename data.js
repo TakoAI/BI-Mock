@@ -3,9 +3,10 @@ function setDataUpload(){
 
     rightContent = {"collapse": true};
     focusContent = {
-        "type": "upload",
+        "type": "fill",
         "data": {
-            "name": "data name"
+            "name": {"t": "text", "p": "Table Name"},
+            "upload": {"t": "file"}
         }
     };
 
