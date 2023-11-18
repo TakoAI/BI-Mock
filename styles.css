@@ -63,3 +63,8 @@ div.content {
     padding: 12px;
     background-color: #ffff;
 }
+
+div.listitem {
+    border: 1px solid #ccc;
+    cursor: pointer;
+}

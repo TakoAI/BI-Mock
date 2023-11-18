@@ -111,6 +111,11 @@ function viewContent(){
             content.appendChild(keyvalue);
             content.appendChild(document.createElement("br"));
         }
+        let tmp1 = document.createElement("input");
+        tmp1.setAttribute("type", "button");
+        tmp1.value = "Submit";
+        tmp1.onclick = focusContent["update"];
+        content.appendChild(tmp1);
     }else if(focusContent["type"] == "data"){
         let data = focusContent["data"];
         let scroller = document.createElement("div");
@@ -171,8 +176,14 @@ function viewContent(){
         for(let key in focusContent["data"]){
             let tmp0 = focusContent["data"][key];
             let tmp1 = document.createElement("div");
-            tmp1.className = "w3-panel";
-            tmp1.innerHTML = tmp0;
+            tmp1.className = "w3-panel listitem";
+            let tmp2 = document.createElement("p");
+            tmp2.innerHTML = key;
+            tmp2.style.color = "#888";
+            tmp1.appendChild(tmp2);
+            let tmp3 = document.createElement("p");
+            tmp3.innerHTML = tmp0["n"];
+            tmp1.appendChild(tmp3);
             content.appendChild(tmp1);
         }
     }

@@ -8,8 +8,9 @@ function setNewAnalysis(){
             "name": {"t": "text", "p": "Analysis Name"},
             "source": {"t": "search", "p": "Select Table"},
             "analysis type": {"t": "search", "p": "Select Analysis"},
-            "run analysis": {"t": "button", "v": "Start Running"}
-        }
+            "schedule": {"t": "checkbox", "v": "Set Schedule"}
+        },
+        "update": null
     };
 
     viewAll();
@@ -20,12 +21,12 @@ function setAnalysisReport(){
     rightContent = {"collapse": true};
     focusContent = {
         "type": "list",
-        "data": [
-            "Analysis 1",
-            "Analysis 2",
-            "Analysis 3",
-            "Analysis 4"
-        ]
+        "data": {
+            "Analysis 1": {"t": "cluster", "n": "User Cluster Analysis 1"},
+            "Analysis 2": {"t": "cluster", "n": "User Cluster Analysis 2"},
+            "Analysis 3": {"t": "summary", "n": "User Summary 1"},
+            "Analysis 4": {"t": "cluster", "n": "User Cluster Analysis 3"}
+        }
     };
 
     viewAll();
