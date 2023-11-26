@@ -1,5 +1,5 @@
 function setNewAnalysis(){
-    subpage = "NewAnalysis";
+    subpage = ["My Analysis", "New Analysis"];
 
     rightContent = {"collapse": true};
     focusContent = {
@@ -16,7 +16,7 @@ function setNewAnalysis(){
     viewAll();
 }
 function setAnalysisReport(){
-    subpage = "AnalysisReport";
+    subpage = ["My Analysis", "Analysis Report"];
 
     rightContent = {"collapse": true};
     focusContent = {
@@ -38,8 +38,15 @@ function setAnalysis(){
         "collapse": false,
         "type": "flist",
         "data": {
-            "New": setNewAnalysis,
-            "Report": setAnalysisReport
+            "My Analysis": {
+                "New Analysis": setNewAnalysis,
+                "Analysis List": null,
+                "Analysis Report": setAnalysisReport
+            },
+            "Analysis Type": {
+                "New Analysis Type": null,
+                "Analysis Type List": null
+            }
         }
     };
     rightContent = {"collapse": true};

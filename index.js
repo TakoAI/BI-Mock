@@ -22,6 +22,7 @@ function initTop(){
     let camTag = document.createElement("button");
     camTag.className = "w3-right";
     camTag.innerHTML = "Campaign";
+    camTag.onclick = setCampaign;
     topbar.append(takoTag);
     topbar.append(titleTag);
     topbar.append(camTag);

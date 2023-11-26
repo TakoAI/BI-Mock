@@ -1,7 +1,7 @@
 // data
 
 const collapseSize = "50px";
-const leftExpandSize = "150px";
+const leftExpandSize = "250px";
 const rightExpandSize = "250px";
 const columnTypes = ["id", "date", "time", "category", "number"];
 
@@ -11,6 +11,23 @@ var leftContent = {"collapse": true};
 var rightContent = {"collapse": true};
 var focusContent = {};
 
+function hideOrShowObj(obj){
+    if(obj.className.indexOf("w3-hide") == -1){
+        obj.className += " w3-hide";
+    }else{
+        obj.className = obj.className.replace(" w3-hide", "");
+    }
+}
+function hideObj(obj){
+    if(obj.className.indexOf("w3-hide") == -1){
+        obj.className += " w3-hide";
+    }
+}
+function showObj(obj){
+    if(obj.className.indexOf("w3-hide") != -1){
+        obj.className = obj.className.replace(" w3-hide", "");
+    }
+}
 function addExpandButton(obj, size, content, cb){
     let tmp = document.createElement("button");
     if(content["collapse"]){
@@ -57,17 +74,30 @@ function viewLeft(){
     if(leftContent["collapse"]){
         return null;
     }
+    leftbar.appendChild(document.createElement("br"));
     if(leftContent["type"] == "flist"){
-        for(let key in leftContent["data"]){
-            let tmp = document.createElement("button");
-            if(key == subpage){
-                tmp.innerHTML = "<b>"+key+"</b>";
-            }else{
-                tmp.innerHTML = key;
+        for(let key0 in leftContent["data"]){
+            let tmp0 = document.createElement("button");
+            tmp0.innerHTML = key0 + ' ⏷';
+            leftbar.appendChild(tmp0);
+            let tmp1 = document.createElement("div");
+            tmp1.className = "w3-container";
+            leftbar.appendChild(tmp1);
+            let tmp2 = leftContent["data"];
+            for(let key in tmp2[key0]){
+                let tmp = document.createElement("button");
+                if(subpage && key0 == subpage[0] && key == subpage[1]){
+                    tmp.innerHTML = "<b>• "+key+"</b>";
+                }else{
+                    tmp.innerHTML = "• "+key;
+                }
+                tmp.onclick = tmp2[key0][key];
+                tmp1.appendChild(tmp);
+                tmp1.appendChild(document.createElement("br"));
             }
-            tmp.onclick = leftContent["data"][key];
-            leftbar.appendChild(document.createElement("br"));
-            leftbar.appendChild(tmp);
+            tmp0.onclick = function(){
+                hideOrShowObj(tmp1);
+            }
         }
     }
 }
@@ -76,7 +106,10 @@ function viewRight(){
     rightbar.innerHTML = "";
     addExpandButton(rightbar, rightExpandSize, rightContent, viewRight);
     if(rightContent["collapse"]){
+        hideObj(rightbar);
         return null;
+    }else{
+        showObj(rightbar);
     }
     if(rightContent["type"] == "select"){
         let data = rightContent["data"];

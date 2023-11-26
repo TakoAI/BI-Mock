@@ -39,14 +39,12 @@ div.centerbar {
 
 div.leftbar {
     width: 50px;
-    min-height: 600px;
     padding: 12px;
     background-color: #eeef;
 }
 
 div.rightbar {
     width: 50px;
-    min-height: 600px;
     padding: 12px;
     background-color: #eeef;
 }

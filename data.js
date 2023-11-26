@@ -1,5 +1,5 @@
 function setDataUpload(){
-    subpage = "Upload";
+    subpage = ["My Data", "Upload"];
 
     rightContent = {"collapse": true};
     focusContent = {
@@ -13,7 +13,7 @@ function setDataUpload(){
     viewAll();
 }
 function setDataManage(){
-    subpage = "Manage";
+    subpage = ["My Data", "Manage"];
 
     function onEdit(data){
         editData(data["name"], data, function(result){
@@ -61,8 +61,10 @@ function setData(){
         "collapse": false,
         "type": "flist",
         "data": {
-            "Upload": setDataUpload,
-            "Manage": setDataManage
+            "My Data": {
+                "Upload": setDataUpload,
+                "Manage": setDataManage
+            }
         }
     };
     rightContent = {"collapse": true};
